@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -15,11 +16,54 @@
 <body class="body">
     <h1 class="h1 mb-3">Hypertext Transfer Protocol Secure
     </h1>
-    <div class="container offset-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <form id="postform">
+                            <div class="form-group">
+                                <label for="title">title</label>
+                                <input type="text" id="title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="body">content</label>
+                                <textarea type="text" id="body" class="form-control" rows='4'></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="userid">userid</label>
+                                <select class="form-control" id="userid">
+                                    <option vlaue="1">1</option>
+                                    <option vlaue="2">2</option>
+                                    <option vlaue="3">3</option>
+                                    <option vlaue="4">4</option>
+                                    <option vlaue="5">5</option>
+                                    <option vlaue="6">6</option>
+                                    <option vlaue="7">7</option>
+                                    <option vlaue="8">8</option>
+                                    <option vlaue="9">9</option>
+                                    <option vlaue="10">10</option>
+                                </select>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-outline-secondary">ADD POST</button>
 
-        <div class="col-md-6 ">
-            <div class="row d-flex justify-content align-items-center" id="card">
-                <!-- <div class="card">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <div id="card">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="card">
                     <div class="card-header">
                         <h1>
                             title
@@ -37,10 +81,10 @@
                         <button class="btn btn-danger"> delete</button>
                     </div>
                 </div> -->
-            </div>
-        </div>
-    </div>
+
+
     <script src="./assets/js/app.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" integrity="sha256-ZCK10swXv9CN059AmZf9UzWpJS34XvilDMJ79K+WOgc=" crossorigin="anonymous">
 
 </body>
 

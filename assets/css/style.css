@@ -26,3 +26,7 @@
     background-image: linear-gradient(to left, #DECBA4, #3E5151) ;
 
 } 
+div#card {
+    display: flex;
+    flex-direction: column-reverse;
+}
