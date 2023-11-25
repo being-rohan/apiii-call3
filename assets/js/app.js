@@ -101,6 +101,7 @@ const clickhandler = (eve) => {//// edit button functionlity
             updatecontrol.classList.remove('d-none')
         }
     }
+    postformcontrol.reset()
 
 }
 
@@ -138,6 +139,8 @@ const postupdate = (ele) => {
             });
         }
     }
+    postformcontrol.reset()
+
 
 }
 const deletehandler = (ele) => {
