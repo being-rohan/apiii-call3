@@ -106,25 +106,25 @@ const clickhandler = (eve) => {//// edit button functionlity
 }
 
 const postupdate = (ele) => {
-    let updateobj = {
+    let updateobj = {/////craeting object to update
         title: titlecontrol.value,
         body: bodycontrol.value,
         useridcontrol: useridcontrol.value
     }
     cl(updateobj)
-    let getupdateid = localStorage.getItem('get')
+    let getupdateid = localStorage.getItem('get')// get item form set item
     cl(getupdateid)
-    let updateurl = `${posturl}/${getupdateid}`
+    let updateurl = `${posturl}/${getupdateid}`/// url
     cl(updateurl)
 
-    let xhr = new XMLHttpRequest();
-    xhr.open('PATCH', updateurl, true)
-    xhr.send(JSON.stringify(updateobj))
+    let xhr = new XMLHttpRequest();/// instance
+    xhr.open('PATCH', updateurl, true)// method
+    xhr.send(JSON.stringify(updateobj))// sending into data base instringfy
     xhr.onload = function () {
         if (xhr.status === 200) {
             let getid2 = postarry.findIndex(post => {
 
-                return post.id == getupdateid///take one by one array
+                return post.id == getupdateid///take one by one array and equlas it
             })
             cl(getid2)///// index number
             postarry[getid2].title = updateobj.title;/// to update or change keys of crated obj
@@ -143,21 +143,21 @@ const postupdate = (ele) => {
 
 
 }
-const deletehandler = (ele) => {
+const deletehandler = (ele) => { //last method
     cl(ele)
-    let deleteobj = ele.closest('.card').id;
+    let deleteobj = ele.closest('.card').id;/// getting id first
     cl(deleteobj)
-    let deleteurl = `${posturl}/${deleteobj}`
+    let deleteurl = `${posturl}/${deleteobj}`// url
     cl(deleteurl)
-    let xhr = new XMLHttpRequest();
-    xhr.open('DELETE', deleteurl, true);
+    let xhr = new XMLHttpRequest();/// instance
+    xhr.open('DELETE', deleteurl, true);/// method
     xhr.send();
     xhr.onload = function () {
         cl(xhr.response)
-        if (xhr.status === 200) {
-            let delete2 = document.getElementById(deleteobj);
+        if (xhr.status === 200) { /// if
+            let delete2 = document.getElementById(deleteobj);// getting posts id
             cl(delete2);
-            delete2.remove();
+            delete2.remove();// and directily removed
             Swal.fire({
                 title: "POST DELETED",
                 text: "things in post are deleted",
