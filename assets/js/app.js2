@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todos Table</title>
+</head>
+<body>
+  <table id="todosTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tbody id="todosBody">
+      <!-- Table body content will be added here -->
+    </tbody>
+  </table>
+  <label for="statusFilter">Filter by Status:</label>
+  <select id="statusFilter">
+    <option value="all">All</option>
+    <option value="true">Completed</option>
+    <option value="false">Incomplete</option>
+  </select>
+
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const todosTable = document.getElementById('todosTable');
+  const todosBody = document.getElementById('todosBody');
+  const statusFilter = document.getElementById('statusFilter');
+
+  let todosData = [];
+
+  // Function to create table rows
+  function createTableRow(todo) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${todo.id}</td>
+      <td>${todo.title}</td>
+      <td>${todo.completed ? 'Completed' : 'Incomplete'}</td>
+    `;
+    return row;
+  }
+
+  // Function to render table with todos
+  function renderTodos(data) {
+    todosBody.innerHTML = '';
+    data.forEach(todo => {
+      todosBody.appendChild(createTableRow(todo));
+    });
+  }
+
+  // Function to filter todos based on completion status
+  function filterTodos(status) {
+    if (status === 'all') {
+      renderTodos(todosData);
+    } else {
+      const filteredTodos = todosData.filter(todo => {
+        return todo.completed === (status === 'true');
+      });
+      renderTodos(filteredTodos);
+    }
+  }
+
+  // XMLHttpRequest to fetch todos data
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        todosData = JSON.parse(xhr.responseText);
+        renderTodos(todosData);
+      } else {
+        console.error('Failed to fetch data');
+      }
+    }
+  };
+
+  xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos', true);
+  xhr.send();
+
+  // Event listener for status filter dropdown change
+  statusFilter.addEventListener('change', function (event) {
+    filterTodos(event.target.value);
+  });
+});
