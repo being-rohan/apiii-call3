@@ -52,6 +52,27 @@ const onhandler = (eve) => { ///// ist step
 
 
 }
+const tempaltingREFacter = (ele) => {
+    let card2 = document.createElement('div');
+    card2.className = 'card mb-4';
+    card2.id = ele.id;
+    card2.innerHTML = `  <div class="card-header">
+    <h1>
+           ${ele.title}
+  </h1>
+         </div>
+                    <div class="card-body">
+                       <p>
+                         ${ele.body}
+                     </div>
+<div class="card-footer  d-flex justify-content-between">
+<button class="btn btn-primary" onclick="clickhandler(this)"> edit</button>
+<button class="btn btn-danger"onclick="deletehandler(this)"> delete</button>
+</div>
+    `
+    card.append(card2);
+    cl(card2);
+}
 const createobj = (postobj) => { //// 2nd step by hitting on add post this will call in 1st step
     let xhr = new XMLHttpRequest();//// creating new instance to send created obj
     xhr.open('POST', posturl, true);////post with posturl // sending to backend
@@ -62,7 +83,9 @@ const createobj = (postobj) => { //// 2nd step by hitting on add post this will 
         if (xhr.status === 200 || xhr.status === 201) {////// two condiytion as we createing and getting dat
             postobj.id = JSON.parse(xhr.response).id;///// we passing object as argument
             postarry.push(postobj);/// pushing  in post array by parameeter
-            tempalting(postarry);// temoplating in post array
+            // tempalting(postarry);// temoplating in post array 100obj+1bj
+            /// refacter oftemplating
+            tempaltingREFacter(postobj)///// refacter templating 
             Swal.fire({
                 title: "Good job!",
                 text: "You  have created post",
@@ -178,21 +201,20 @@ let tempalting = (arr => {
     let result = ``;
     arr.forEach(ele => {
         result += `  <div class="card mb-4"id="${ele.id}">
-        <div class="card-header">
-            <h1>
-                ${ele.title}
-            </h1>
-        </div>
-        <div class="card-body">
-            <p>
-               ${ele.body}
-        </div>
+                                  <div class="card-header">
+                           <h1>
+                                  ${ele.title}
+                         </h1>
+                                </div>
+                                           <div class="card-body">
+                                              <p>
+                                                ${ele.body}
+                                            </div>
         <div class="card-footer  d-flex justify-content-between">
             <button class="btn btn-primary" onclick="clickhandler(this)"> edit</button>
             <button class="btn btn-danger"onclick="deletehandler(this)"> delete</button>
         </div>
     </div>`
-
     });
     card.innerHTML = result;
 })
