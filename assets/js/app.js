@@ -54,7 +54,7 @@ const onhandler = (eve) => { ///// ist step
 }
 const tempaltingREFacter = (ele) => {
     let card2 = document.createElement('div');
-    card2.className = 'card mb-4';
+    card2.className = 'card mb-4'
     card2.id = ele.id;
     card2.innerHTML = `  <div class="card-header">
     <h1>
@@ -200,7 +200,8 @@ const deletehandler = (ele) => { //last method
 let tempalting = (arr => {
     let result = ``;
     arr.forEach(ele => {
-        result += `  <div class="card mb-4"id="${ele.id}">
+        result += `  <div class="
+        "id="${ele.id}">
                                   <div class="card-header">
                            <h1>
                                   ${ele.title}
@@ -228,7 +229,7 @@ const gethandler = () => { ////for getting data
 
     xhr2.send()
     xhr2.onload = function gt() {
-        // cl(xhr2.response)
+        cl(xhr2.response)
 
         if (xhr2.status === 200) { /// if status code
             postarry = JSON.parse(xhr2.response)/// doing parse
